@@ -17,25 +17,25 @@ const Settings: React.FC = () => {
 
   const handleTime = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value;
-    if (isNaN(value) || value < 15 || value > 50) return;
+    if (isNaN(value) || value < 0 || value > 50) return;
     setTimer(value);
   };
 
   const handleShort = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value;
-    if (isNaN(value) || value < 5 || value > 10) return;
+    if (isNaN(value) || value < 0 || value > 10) return;
     setShortBreak(value);
   };
 
   const handleLong = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value;
-    if (isNaN(value) || value < 10 || value > 30) return;
+    if (isNaN(value) || value < 0 || value > 30) return;
     setLongBreak(value);
   };
 
   const handleCycles = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value;
-    if (isNaN(value) || value < 2 || value > 10) return;
+    if (isNaN(value) || value < 0 || value > 10) return;
     setCycles(value);
   };
 

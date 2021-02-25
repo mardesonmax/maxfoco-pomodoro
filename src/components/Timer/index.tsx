@@ -5,7 +5,7 @@ import FormateToTimer from '../../utils/formatToTimer';
 import useInterval from '../../hooks/useInterval';
 import Seconds from '../../utils/minuteToSecond';
 import Button from '../Button';
-import { FaPlay, FaPause } from 'react-icons/fa';
+import { FaPlay, FaPause, FaStop } from 'react-icons/fa';
 import { PomodoroContext } from '../../contexts/Pomodoro/';
 import { Container } from '../../styles/globalStyled';
 import { setPomodoro } from '../../contexts/Pomodoro/actions';
@@ -68,7 +68,7 @@ const Timer: React.FC = () => {
       }
       finish.play();
     },
-    init ? 1000 : null,
+    init ? 1 : null,
   );
 
   useEffect(() => {
@@ -117,6 +117,17 @@ const Timer: React.FC = () => {
     setInit(!init);
   };
 
+  const handleStop = () => {
+    setInit(false);
+    if (working && !rest) {
+      setMainTime(Seconds(timer));
+    } else if (rest && restLong) {
+      setMainTime(Seconds(longBreak));
+    } else {
+      setMainTime(Seconds(shortBreak));
+    }
+  };
+
   return (
     <Pomodoro>
       <Container className="item">
@@ -155,6 +166,10 @@ const Timer: React.FC = () => {
               <FaPause />
             </Button>
           )}
+
+          <Button onClick={() => handleStop()}>
+            <FaStop />
+          </Button>
         </div>
 
         <div className="info">

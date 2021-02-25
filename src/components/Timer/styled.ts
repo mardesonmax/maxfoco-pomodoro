@@ -38,6 +38,10 @@ export const Pomodoro = styled.section`
   .controllers {
     display: flex;
     justify-content: center;
+
+    button {
+      margin: 0 5px;
+    }
   }
 
   .info {

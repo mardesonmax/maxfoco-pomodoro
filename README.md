@@ -18,5 +18,5 @@ You will also see any lint errors in the console.
 
 open [https://maxfoco.herokuapp.com/](https://maxfoco.herokuapp.com/)
 
-![](/public/images/image-1.png)
-![](/public/images/image-2.png)
+![](./public/images/image-1.png)
+![](./public/images/image-2.png)

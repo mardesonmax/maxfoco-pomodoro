@@ -68,7 +68,7 @@ const Timer: React.FC = () => {
       }
       finish.play();
     },
-    init ? 1 : null,
+    init ? 1000 : null,
   );
 
   useEffect(() => {

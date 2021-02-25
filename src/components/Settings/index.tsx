@@ -17,25 +17,25 @@ const Settings: React.FC = () => {
 
   const handleTime = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value;
-    if (isNaN(value) || value < 0 || value > 50) return;
+    if (isNaN(value) || value < 15 || value > 50) return;
     setTimer(value);
   };
 
   const handleShort = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value;
-    if (isNaN(value) || value < 0 || value > 10) return;
+    if (isNaN(value) || value < 5 || value > 10) return;
     setShortBreak(value);
   };
 
   const handleLong = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value;
-    if (isNaN(value) || value < 0 || value > 30) return;
+    if (isNaN(value) || value < 10 || value > 30) return;
     setLongBreak(value);
   };
 
   const handleCycles = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value;
-    if (isNaN(value) || value < 0 || value > 10) return;
+    if (isNaN(value) || value < 4 || value > 10) return;
     setCycles(value);
   };
 
@@ -57,37 +57,49 @@ const Settings: React.FC = () => {
           <div className="items">
             <label>
               <p>Pomodoro</p>
+              <small>{timer} min</small>
               <input
-                type="number"
+                type="range"
                 value={timer}
                 onChange={(e) => handleTime(e)}
+                min="15"
+                max="50"
               />
             </label>
 
             <label>
               <p>Descaço curto</p>
+              <small>{shortBreak} min</small>
               <input
-                type="number"
+                type="range"
                 value={shortBreak}
                 onChange={(e) => handleShort(e)}
+                min="5"
+                max="10"
               />
             </label>
 
             <label>
               <p>Descaço longo</p>
+              <small>{longBreak} min</small>
               <input
-                type="number"
+                type="range"
                 value={longBreak}
                 onChange={(e) => handleLong(e)}
+                min="10"
+                max="30"
               />
             </label>
 
             <label>
               <p>Ciclos total</p>
+              <small>{cycles}</small>
               <input
-                type="number"
+                type="range"
                 value={cycles}
                 onChange={(e) => handleCycles(e)}
+                min="4"
+                max="10"
               />
             </label>
           </div>

@@ -1,12 +1,6 @@
 import { Display, Pomodoro } from './styled';
-import {
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
-import { DefaultTheme } from 'styled-components';
+import { useContext, useEffect, useState } from 'react';
+
 import FormateToTimer from '../../utils/formatToTimer';
 import useInterval from '../../hooks/useInterval';
 import Seconds from '../../utils/minuteToSecond';
@@ -16,11 +10,15 @@ import { PomodoroContext } from '../../contexts/Pomodoro/';
 import { Container } from '../../styles/globalStyled';
 import { setPomodoro } from '../../contexts/Pomodoro/actions';
 
-type Props = {
-  setTheme: Dispatch<SetStateAction<DefaultTheme>>;
+const sound = (src: string) => {
+  const audio = new Audio(src);
+  return audio;
 };
 
-const Timer: React.FC<Props> = () => {
+const finish = sound('/sounds/finish.mp3');
+const start = sound('/sounds/start.mp3');
+
+const Timer: React.FC = () => {
   const { state, dispatch } = useContext(PomodoroContext);
 
   const { configs, pomodoro, working, rest, restLong } = state;
@@ -30,8 +28,18 @@ const Timer: React.FC<Props> = () => {
   const [mainTime, setMainTime] = useState(0);
 
   useEffect(() => {
-    document.title = `${FormateToTimer(mainTime)} - MAXFOCO`;
-  }, [mainTime]);
+    if (init) {
+      document.title = `${FormateToTimer(mainTime)} - MAXFOCO`;
+    } else {
+      document.title = `MAXFOCO`;
+    }
+  }, [mainTime, init]);
+
+  useEffect(() => {
+    if (init) {
+      start.play();
+    }
+  }, [init]);
 
   useInterval(
     () => {
@@ -58,6 +66,7 @@ const Timer: React.FC<Props> = () => {
           handleWorkin();
         }
       }
+      finish.play();
     },
     init ? 1000 : null,
   );

@@ -68,7 +68,7 @@ const Settings: React.FC = () => {
             </label>
 
             <label>
-              <p>Descaço curto</p>
+              <p>Short Break</p>
               <small>{shortBreak} min</small>
               <input
                 type="range"
@@ -80,7 +80,7 @@ const Settings: React.FC = () => {
             </label>
 
             <label>
-              <p>Descaço longo</p>
+              <p>Long Break</p>
               <small>{longBreak} min</small>
               <input
                 type="range"
@@ -92,7 +92,7 @@ const Settings: React.FC = () => {
             </label>
 
             <label>
-              <p>Ciclos total</p>
+              <p>Cycles totals</p>
               <small>{cycles}</small>
               <input
                 type="range"

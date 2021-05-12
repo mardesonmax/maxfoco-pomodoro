@@ -16,7 +16,7 @@ You will also see any lint errors in the console.
 
 ### `View`
 
-open [https://maxfoco.herokuapp.com/](https://maxfoco.herokuapp.com/)
+open [https://maxfoco-pomodoro-9z0zt4eof-mardesonmax.vercel.app/](https://maxfoco-pomodoro-9z0zt4eof-mardesonmax.vercel.app/)
 
 ![](/public/images/image-1.png)
 ![](/public/images/image-2.png)
